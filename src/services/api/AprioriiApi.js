@@ -1,0 +1,1 @@
+export const API = 'http://8b962031.ngrok.io/apriori-backend/public/api';

@@ -1,0 +1,38 @@
+{
+    "status" : "success",
+    "message" : "Successfully displayed product",
+    "data" : [
+        {
+            "no_transaksi" : "notransaksi1",
+            "detail"    : [
+                {
+                    "id_produk" : "idproduk1"
+                },
+                {
+                    "id_produk" : "idproduk2"
+                },
+                {
+                    "id_produk" : "idproduk3"
+                },
+                {
+                    "id_produk" : "idproduk4"
+                },
+            ]
+        },
+        {
+            "no_transaksi" : "notransaksi2",
+            "detail"    : [
+                {
+                    "id_produk" : "idproduk45"
+                },
+                {
+                    "id_produk" : "idproduk55"
+                },
+                {
+                    "id_produk" : "idproduk44"
+                },
+            ]
+        },
+        ..dst....
+    ]
+}
