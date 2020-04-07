@@ -64,7 +64,7 @@ const AprioriData = () => {
                                 </TableCell>
                                 <TableCell align="center">{apriori.antecedent+','}</TableCell>
                                 <TableCell align="center">{apriori.consequent}</TableCell>
-                                <TableCell align="center">{Math.floor(apriori.support*100)}</TableCell>
+                                <TableCell align="center">{Math.floor(apriori.support*1000)}%</TableCell>
                                 <TableCell align="center">{Math.floor(apriori.confidence*100)}%</TableCell>
                             </TableRow>
                         ))}

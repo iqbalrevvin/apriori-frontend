@@ -3,9 +3,15 @@ import {API} from '../api/AprioriiApi'
 
 const productReducer = (state, action) => {
     switch(action.type){
+        case 'LOADING':
+            return {
+                ...state,
+                loading: true
+            }
         case 'GET_PRODUCT':
             return{
                 ...state,
+                loading: false,
                 data: action.payload
             }
         default:
@@ -14,6 +20,7 @@ const productReducer = (state, action) => {
 }
 
 const getListProduct = dispatch => async () => {
+    dispatch({type: 'LOADING'})
     try{
         let response =  await fetch(`${API}/api/product`);
         let json = await response.json();
@@ -27,5 +34,5 @@ const getListProduct = dispatch => async () => {
 export const {Provider, Context} = createDataContext(
     productReducer,
     {getListProduct},
-    {data: []}
+    {loading: false, data: []}
 )

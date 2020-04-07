@@ -13,11 +13,13 @@ import {
     Typography,
     Button,
 } from '@material-ui/core';
+import Skeleton from '@material-ui/lab/Skeleton';
 
 const ProductList = () => {
     const {state, getListProduct} = useContext(ProductContext)
     const {state:data, addCart} = useContext(CartContext)
     const classes = useStyles();
+    const number = [1,2,3,4,5, 6]
 
     useEffect(() => {
         getListProduct()
@@ -37,10 +39,36 @@ const ProductList = () => {
         // alert(dataCart.length)
         
     }
+
+    const showSkeleton = () => (
+        state.loading && (
+            <Fragment>
+                
+                <GridListTile cols={1}>
+                    <Skeleton variant="rect" width={380} height={200} />
+                    <Skeleton />
+                    <Skeleton width="50%" />
+                </GridListTile>
+                &nbsp;
+                <GridListTile cols={1}>
+                    <Skeleton variant="rect" width={380} height={200} />
+                    <Skeleton />
+                    <Skeleton width="50%" />
+                </GridListTile>
+                &nbsp;
+                <GridListTile cols={1}>
+                    <Skeleton variant="rect" width={380} height={200} />
+                    <Skeleton />
+                    <Skeleton width="50%" />
+                </GridListTile>
+            </Fragment>
+        )
+    )
     return (
         <Fragment>
             {/* {JSON.stringify(data)} */}
             <GridList cellHeight={350} className={classes.gridList} cols={3}>
+                {showSkeleton()}
                 {state.data.map((product, i) => ( 
                     <GridListTile key={i} cols={1}>
                         <Card className={classes.root}>
