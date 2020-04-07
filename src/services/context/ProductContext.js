@@ -15,12 +15,12 @@ const productReducer = (state, action) => {
 
 const getListProduct = dispatch => async () => {
     try{
-        let response =  await fetch(`${API}/product`);
+        let response =  await fetch(`${API}/api/product`);
         let json = await response.json();
         dispatch({type: 'GET_PRODUCT', payload: json.data})
 
     }catch(error){
-        console.log(error)
+        // console.log(error)
     }
 }
 

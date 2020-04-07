@@ -1,4 +1,4 @@
-import React, {Fragment, useContext, useEffect, useState} from 'react';
+import React, {Fragment, useContext, useEffect} from 'react';
 import {Context as ProductContext} from '../../services/context/ProductContext'
 import {Context as CartContext} from '../../services/context/CartContext'
 import { makeStyles } from '@material-ui/core/styles';
@@ -17,7 +17,6 @@ import {
 const ProductList = () => {
     const {state, getListProduct} = useContext(ProductContext)
     const {state:data, addCart} = useContext(CartContext)
-    const [visible, setVisible] = useState(false)
     const classes = useStyles();
 
     useEffect(() => {

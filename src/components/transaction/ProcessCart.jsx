@@ -11,7 +11,7 @@ import {
     Button,
 } from '@material-ui/core';
 
-const CartList = () => {
+const ProcessCart = () => {
     const {state, deleteCart} = useContext(CartContext)
 
     const classes = useStyles();
@@ -19,17 +19,24 @@ const CartList = () => {
         <Fragment>
             {
                 state.length > 0 && (
-                    <Link to='/transaction' className={classes.link}>
-                        <Button variant="contained" color="primary">
-                            {state.length} Order Process
+                    <Fragment>
+                        <Button variant="contained" color="secondary">
+                            Pay For {state.length} Orders
                         </Button>
-                    </Link>
+                        <Typography component="h6" variant="h6" align="left" color="textPrimary" gutterBottom>
+                            <Link to='/shop'>
+                                Back to shop
+                            </Link>
+                        </Typography>
+                    </Fragment>
                 )
             }
             {
                 state.length === 0 && (
                     <Typography component="h1" variant="h5" align="center" color="textPrimary" gutterBottom>
-                        Please choose food
+                        <Link to='/shop'>
+                            Please choose food
+                        </Link>
                     </Typography>
                 )
             }
@@ -61,7 +68,7 @@ const CartList = () => {
     );
 }
 
-export default CartList;
+export default ProcessCart;
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -72,8 +79,4 @@ const useStyles = makeStyles(() => ({
     inline: {
         display: 'inline',
     },
-    link: {
-        textDecoration: 'none',
-        color: 'white'
-    }
-    }));
+}));

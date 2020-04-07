@@ -7,8 +7,10 @@ import ProductList from '../components/shop/ProductList';
 import CartList from '../components/shop/CartList';
 import {isAuthenticated} from '../services/authServices'
 import {Redirect} from 'react-router-dom';
+import AprioriData from '../components/transaction/AprioriData'
+import ProcessCart from '../components/transaction/ProcessCart';
 
-const Shop = () => {
+const Transaction = () => {
     const classes = useStyles();
     const checkLogin = () => {
         if(!isAuthenticated()){
@@ -25,12 +27,13 @@ const Shop = () => {
             <Container maxWidth="xl" >
                 <Grid container spacing={3} style={{ justifyContent: 'center' }}>
                     <Grid item xs={12} sm={8}>
-                        <Paper className={classes.paper}>List Product</Paper>
-                        <ProductList/>
+                        <Paper className={classes.paper}>Recomended Product</Paper>
+                        <AprioriData/>
+                        {/* <ProductList/> */}
                     </Grid>
                     <Grid item xs={12} sm={4} >
-                        <Paper className={classes.paper}>Cart</Paper>
-                        <CartList />
+                        <Paper className={classes.paper}>Proccess Order</Paper>
+                        <ProcessCart/>
                     </Grid>
                 </Grid>
             </Container>
@@ -38,7 +41,7 @@ const Shop = () => {
     );
 }
 
-export default Shop;
+export default Transaction;
 
 const useStyles = makeStyles((theme) => ({
     root: {

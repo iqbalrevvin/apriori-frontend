@@ -1,21 +1,15 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import StarIcon from '@material-ui/icons/StarBorder';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Header from '../components/Header';
 import Icon from '@material-ui/core/Icon';
-import {Link, withRouter} from 'react-router-dom'
+import {isAuthenticated} from '../services/authServices';
+import {Link, withRouter} from 'react-router-dom';
 
 const Copyright = () => {
     return (
@@ -50,25 +44,47 @@ const Home = () => {
             <Container maxWidth="sm" component="main">
                 <Grid container spacing={9} alignItems="center">
                     <Grid item xs={12} sm={12} md={4} style={{ textAlign: 'center' }}>
-                    <Link to='/signin' className={classes.link}>
-                        <Button variant="contained" color="primary" startIcon={<Icon>person</Icon>}>
-                            Go Signin
-                        </Button>
-                    </Link>   
+                        {
+                            !isAuthenticated() && (
+                                <Link to='/signin' className={classes.link}>
+                                    <Button variant="contained" color="primary" startIcon={<Icon>person</Icon>}>
+                                        Go Signin
+                                    </Button>
+                                </Link>  
+                            )
+                        } 
                     </Grid>
                     <Grid item xs={12} sm={12} md={4} style={{ textAlign: 'center' }}>
-                        <Link to='/signup' className={classes.link}>
-                            <Button variant="contained" color="primary" endIcon={<Icon>person</Icon>}>
-                                Go Signup
-                            </Button>
-                        </Link>
+                        {
+                            !isAuthenticated() && (
+                                <Link to='/signup' className={classes.link}>
+                                    <Button variant="contained" color="primary" endIcon={<Icon>person</Icon>}>
+                                        Go Signup
+                                    </Button>
+                                </Link>
+                            )
+                        }
+                        {
+                            isAuthenticated() && (
+                                <Link to='/shop' className={classes.link}>
+                                    <Button variant="contained" color="secondary" endIcon={<Icon>shop_two</Icon>}>
+                                        Go Shop
+                                    </Button>
+                                </Link>
+                            )
+                        }
+                        
                     </Grid>
                     <Grid item xs={12} sm={12} md={4} style={{ textAlign: 'center' }}>
-                        <Link to='/shop' className={classes.link}>
-                            <Button variant="contained" color="secondary" endIcon={<Icon>shop_two</Icon>}>
-                                Go Shop
-                            </Button>
-                        </Link>
+                        {
+                            !isAuthenticated() && (
+                                <Link to='/shop' className={classes.link}>
+                                    <Button variant="contained" color="secondary" endIcon={<Icon>shop_two</Icon>}>
+                                        Go Shop
+                                    </Button>
+                                </Link>
+                            )
+                        }
                     </Grid>
                 </Grid>
             </Container>
