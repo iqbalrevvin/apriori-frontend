@@ -40,6 +40,10 @@ const SignIn = () => {
             [name]: event.target.value
         })
     }
+    
+    const test(){
+      alert('test hello!')
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
